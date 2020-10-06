@@ -23,6 +23,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && Walking.activeInHierarchy != true)
         {
+            smoke.Play();
             cameras[0].Render();
             if (Car.activeInHierarchy == true)
             {
@@ -44,6 +45,7 @@ public class SwappingBehavior : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && Car.activeInHierarchy != true)
         {
+            smoke.Play();
             cameras[1].Render();
             if (Walking.activeInHierarchy == true)
             {
@@ -65,6 +67,7 @@ public class SwappingBehavior : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && Plane.activeInHierarchy != true)
         {
+            smoke.Play();
             cameras[2].Render();
             if (Walking.activeInHierarchy == true)
             {
@@ -85,5 +88,6 @@ public class SwappingBehavior : MonoBehaviour
             Plane.SetActive(true);
             PlayerPlane.m_speed = 0;
         }
+        //smoke.Stop();
     }
 }
