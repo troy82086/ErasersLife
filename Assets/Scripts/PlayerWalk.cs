@@ -28,7 +28,6 @@ public class PlayerWalk : MonoBehaviour
         float forward = Input.GetAxis("Vertical") * m_speed * Time.deltaTime;
 
         Vector3 FORWARD = player.TransformDirection(Vector3.back);
-        Vector3 UP = player.TransformDirection(Vector3.up);
 
         player.transform.localPosition += FORWARD * forward;
 
