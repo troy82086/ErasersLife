@@ -15,7 +15,6 @@ public class PlayerPlane : MonoBehaviour
 
     public static float m_speed = 0;
     private Rigidbody rb;
-    private bool touchingGround = false;
 
     private void Start()
     {
@@ -70,16 +69,6 @@ public class PlayerPlane : MonoBehaviour
         Vector3 FORWARD = player.TransformDirection(Vector3.up);
 
         player.transform.localPosition += FORWARD * forward;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("floor")) touchingGround = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("floor")) touchingGround = false;
     }
 }
 

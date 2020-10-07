@@ -18,7 +18,7 @@ public class SwappingBehavior : MonoBehaviour
         Car.SetActive(false);
         Plane.SetActive(false);
     }
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1) && Walking.activeInHierarchy != true)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCar : MonoBehaviour
 {
     [SerializeField] Transform player = null;
-    [SerializeField] int horizontalSpeed = 1;
+    [SerializeField] int turnSpeed = 1;
     [SerializeField] int m_speed = 1;
 
     void Update()
@@ -15,7 +15,7 @@ public class PlayerCar : MonoBehaviour
         velocity.z = Input.GetAxis("Vertical");
         velocity.x = Input.GetAxis("Horizontal");
 
-        float h = horizontalSpeed * Input.GetAxis("Horizontal");
+        float h = turnSpeed * Input.GetAxis("Horizontal");
 
         Quaternion rotation = player.rotation;
         rotation.eulerAngles += new Vector3(0, h, 0);
