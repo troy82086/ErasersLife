@@ -11,17 +11,38 @@ public class SwappingBehavior : MonoBehaviour
     [SerializeField] Camera[] cameras = null;
     [SerializeField] ParticleSystem smoke = null;
 
+    private bool walkIsUnlocked;
+    private bool carIsUnlocked;
+    private bool planeIsUnlocked;
+
     private void Start()
     {
         cameras[0].Render();
         Walking.SetActive(true);
         Car.SetActive(false);
         Plane.SetActive(false);
+        walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
+        carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
+        planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
+        if (carIsUnlocked)
+        {
+            cameras[1].Render();
+            Walking.SetActive(false);
+            Car.SetActive(true);
+            Plane.SetActive(false);
+        }
+        else if (planeIsUnlocked)
+        {
+            cameras[2].Render();
+            Walking.SetActive(false);
+            Car.SetActive(false);
+            Plane.SetActive(true);
+        }
     }
-    
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && Walking.activeInHierarchy != true)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && Walking.activeInHierarchy != true && walkIsUnlocked)
         {
             smoke.Play();
             cameras[0].Render();
@@ -43,7 +64,7 @@ public class SwappingBehavior : MonoBehaviour
             Car.SetActive(false);
             Plane.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && Car.activeInHierarchy != true)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && Car.activeInHierarchy != true && carIsUnlocked)
         {
             smoke.Play();
             cameras[1].Render();
@@ -65,7 +86,7 @@ public class SwappingBehavior : MonoBehaviour
             Car.SetActive(true);
             Plane.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && Plane.activeInHierarchy != true)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && Plane.activeInHierarchy != true && planeIsUnlocked)
         {
             smoke.Play();
             cameras[2].Render();
@@ -86,7 +107,7 @@ public class SwappingBehavior : MonoBehaviour
             Walking.SetActive(false);
             Car.SetActive(false);
             Plane.SetActive(true);
-            PlayerPlane.m_speed = 0;
+            Plane.GetComponent<PlayerPlane>().m_speed = 0;
         }
         //smoke.Stop();
     }

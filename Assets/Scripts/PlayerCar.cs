@@ -9,6 +9,8 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] int turnSpeed = 1;
     [SerializeField] int m_speed = 1;
 
+    public bool Unlocked = false;
+
     void Update()
     {
         Vector3 velocity = Vector3.zero;

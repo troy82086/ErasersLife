@@ -10,7 +10,7 @@ public class PlayerWalk : MonoBehaviour
     [SerializeField] int horizontalSpeed = 1;
     [SerializeField] int m_speed = 1;
     [SerializeField] int jumpforce = 5;
-
+    public bool Unlocked = false;
     private bool touchingFloor;
 
     void Update()
