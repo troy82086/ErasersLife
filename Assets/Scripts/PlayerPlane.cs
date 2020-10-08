@@ -13,6 +13,7 @@ public class PlayerPlane : MonoBehaviour
     [SerializeField] float idleSpeed = 4f;
     [SerializeField] float fallingSpeed = 3.9f;
 
+    public int cost = 5;
     public bool Unlocked = false;
     public float m_speed = 0;
     private Rigidbody rb;

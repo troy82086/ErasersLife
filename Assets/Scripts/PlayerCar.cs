@@ -9,6 +9,7 @@ public class PlayerCar : MonoBehaviour
     [SerializeField] int turnSpeed = 1;
     [SerializeField] int m_speed = 1;
 
+    public int cost = 5;
     public bool Unlocked = false;
 
     void Update()
