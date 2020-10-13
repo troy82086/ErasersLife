@@ -10,7 +10,7 @@ public class SwappingBehavior : MonoBehaviour
     [SerializeField] GameObject Plane = null;
     [SerializeField] Camera[] cameras = null;
     [SerializeField] ParticleSystem smoke = null;
-    [SerializeField] float imagination = 100; 
+    [SerializeField] float imagination = 100;
 
     private bool walkIsUnlocked;
     private bool carIsUnlocked;
@@ -24,17 +24,21 @@ public class SwappingBehavior : MonoBehaviour
     private void Start()
     {
         startAmount = imagination;
-        cameras[0].Render();
-        Walking.SetActive(true);
-        Car.SetActive(false);
-        Plane.SetActive(false);
         walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
         carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
         planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
         costOfWalk = Walking.GetComponent<PlayerWalk>().cost;
         costOfCar = Car.GetComponent<PlayerCar>().cost;
         costOfPlane = Plane.GetComponent<PlayerPlane>().cost;
-        if (carIsUnlocked)
+
+        if (walkIsUnlocked)
+        {
+            cameras[0].Render();
+            Walking.SetActive(true);
+            Car.SetActive(false);
+            Plane.SetActive(false);
+        }
+        else if (carIsUnlocked)
         {
             cameras[1].Render();
             Walking.SetActive(false);
@@ -60,14 +64,14 @@ public class SwappingBehavior : MonoBehaviour
             if (Car.activeInHierarchy == true)
             {
                 Walking.transform.position = new Vector3(Car.transform.position.x, Car.transform.position.y + 2.54f, Car.transform.position.z);
-            
+
                 Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Car.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
                 Walking.transform.rotation = Quaternion.Euler(eulerRotation);
             }
             if (Plane.activeInHierarchy == true)
             {
                 Walking.transform.position = new Vector3(Plane.transform.position.x, Plane.transform.position.y + 2.54f, Plane.transform.position.z);
-               
+
                 Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Plane.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
                 Walking.transform.rotation = Quaternion.Euler(eulerRotation);
             }
@@ -106,7 +110,7 @@ public class SwappingBehavior : MonoBehaviour
             if (Walking.activeInHierarchy == true)
             {
                 Plane.transform.position = new Vector3(Walking.transform.position.x, Walking.transform.position.y - 2.54f, Walking.transform.position.z);
-               
+
                 Vector3 eulerRotation = new Vector3(Plane.transform.eulerAngles.x, Walking.transform.eulerAngles.y, Plane.transform.eulerAngles.z);
                 Plane.transform.rotation = Quaternion.Euler(eulerRotation);
             }
@@ -123,9 +127,9 @@ public class SwappingBehavior : MonoBehaviour
             Plane.GetComponent<PlayerPlane>().m_speed = 0;
         }
         //smoke.Stop();
-        if(imagination < startAmount)
+        if (imagination < startAmount)
         {
-           imagination += .25f * Time.deltaTime;
+            imagination += .25f * Time.deltaTime;
         }
     }
 }

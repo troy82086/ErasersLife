@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPlane : MonoBehaviour
 {
     [SerializeField] Transform player = null;
+    [SerializeField] Transform cameraTransform = null;
     [SerializeField] int horizontalSpeed = 1;
     [SerializeField] int verticalSpeed = 1;
     [SerializeField] int rotatationSpeed = 1;
@@ -55,7 +56,7 @@ public class PlayerPlane : MonoBehaviour
             m_speed += 0.1f;
         }
 
-        if(m_speed < fallingSpeed)
+        if (m_speed < fallingSpeed)
         {
             rb.isKinematic = false;
             rb.useGravity = true;
@@ -70,7 +71,13 @@ public class PlayerPlane : MonoBehaviour
 
         Vector3 FORWARD = player.TransformDirection(Vector3.up);
 
-        player.transform.localPosition += FORWARD * forward;
+        player.localPosition += FORWARD * forward;
+
+        Quaternion newRotation = cameraTransform.rotation;
+        newRotation.eulerAngles -= new Vector3(0, -h, 0);
+
+        cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, newRotation, Time.deltaTime * 10);
+        cameraTransform.localPosition = new Vector3(player.localPosition.x, cameraTransform.localPosition.y, player.localPosition.z);
     }
 }
 
