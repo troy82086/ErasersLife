@@ -169,10 +169,12 @@ public class SwappingBehavior : MonoBehaviour
             Vector3 eulerRotation = new Vector3(Plane.transform.eulerAngles.x, Car.transform.eulerAngles.y, Plane.transform.eulerAngles.z);
             Plane.transform.rotation = Quaternion.Euler(eulerRotation);
         }
+        PlayerPlane pp = Plane.GetComponent<PlayerPlane>();
         Walking.SetActive(false);
         Car.SetActive(false);
         Plane.SetActive(true);
-        Plane.GetComponent<PlayerPlane>().m_speed = 0;
+        pp.m_speed = 0;
+        pp.cameraTransform.rotation = new Quaternion(pp.cameraTransform.rotation.eulerAngles.x, pp.cameraTransform.rotation.eulerAngles.y, Plane.transform.rotation.eulerAngles.z, 360f);
     }
 
     private void mouseOver()

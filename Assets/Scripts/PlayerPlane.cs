@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerPlane : MonoBehaviour
 {
     [SerializeField] Transform player = null;
-    [SerializeField] Transform cameraTransform = null;
     [SerializeField] int horizontalSpeed = 1;
     [SerializeField] int verticalSpeed = 1;
     [SerializeField] int rotatationSpeed = 1;
@@ -14,6 +13,7 @@ public class PlayerPlane : MonoBehaviour
     [SerializeField] float idleSpeed = 4f;
     [SerializeField] float fallingSpeed = 3.9f;
 
+    public Transform cameraTransform = null;
     public int cost = 5;
     public bool Unlocked = false;
     public float m_speed = 0;
