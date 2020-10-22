@@ -28,17 +28,24 @@ public class PlayerPlane : MonoBehaviour
     {
         Vector3 velocity = Vector3.zero;
         velocity.z = verticalSpeed * Input.GetAxis("Up and Down");
-        velocity.x = horizontalSpeed * Input.GetAxis("Left and Right");
-        velocity.y = Input.GetAxis("W and S");
 
-        float h = horizontalSpeed * Input.GetAxis("Left and Right");
-        float v = verticalSpeed * Input.GetAxis("Up and Down");
-        float z = horizontalSpeed * Input.GetAxis("A and D");
+        float pitch = verticalSpeed * Input.GetAxis("Up and Down");
+        float roll = horizontalSpeed * Input.GetAxis("A and D");
+        float yaw = horizontalSpeed * Input.GetAxis("Left and Right");
 
-        Quaternion rotation = player.rotation;
-        rotation.eulerAngles -= new Vector3(v, -h, z);
-        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation, Time.deltaTime * 10);
+        Quaternion rotation2 = player.rotation;
+        rotation2.eulerAngles -= new Vector3(pitch, 0, 0);
+        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation2, Time.deltaTime * 10);
 
+        Quaternion rotation1 = player.rotation;
+        rotation1.eulerAngles -= new Vector3(0, -yaw, 0);
+        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation1, Time.deltaTime * 10);
+        
+        Quaternion rotation3 = player.rotation;
+        rotation3.eulerAngles -= new Vector3(0, 0, roll);
+        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation3, Time.deltaTime * 10);
+
+        
         if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
         {
             m_speed += 0.5f;
@@ -74,7 +81,7 @@ public class PlayerPlane : MonoBehaviour
         player.localPosition += FORWARD * forward;
 
         Quaternion newRotation = cameraTransform.rotation;
-        newRotation.eulerAngles -= new Vector3(0, -h, 0);
+        newRotation.eulerAngles -= new Vector3(0, -yaw, 0);
 
         cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, newRotation, Time.deltaTime * 10);
         cameraTransform.localPosition = new Vector3(player.localPosition.x, cameraTransform.localPosition.y, player.localPosition.z);

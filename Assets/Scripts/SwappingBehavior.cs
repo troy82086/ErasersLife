@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SwappingBehavior : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class SwappingBehavior : MonoBehaviour
     [SerializeField] GameObject Walking = null;
     [SerializeField] GameObject Car = null;
     [SerializeField] GameObject Plane = null;
-    [SerializeField] GameObject UISwapTypes = null;
+    [SerializeField] GameObject[] UISwapTypes = null;
+    [SerializeField] Slider imaginationBar = null;
     [SerializeField] ParticleSystem smoke = null;
 
     private bool walkIsUnlocked;
@@ -34,43 +36,51 @@ public class SwappingBehavior : MonoBehaviour
     private void Start()
     {
         startAmount = imagination;
-        walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
-        carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
-        planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
         costOfWalk = Walking.GetComponent<PlayerWalk>().cost;
         costOfCar = Car.GetComponent<PlayerCar>().cost;
         costOfPlane = Plane.GetComponent<PlayerPlane>().cost;
 
+        walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
+        carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
+        planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
+
         if (walkIsUnlocked)
         {
-            cameras[0].Render();
-            Walking.SetActive(true);
-            Car.SetActive(false);
-            Plane.SetActive(false);
+            goWalk();
         }
         else if (carIsUnlocked)
         {
-            cameras[1].Render();
-            Walking.SetActive(false);
-            Car.SetActive(true);
-            Plane.SetActive(false);
+            goCar();
         }
         else if (planeIsUnlocked)
         {
-            cameras[2].Render();
-            Walking.SetActive(false);
-            Car.SetActive(false);
-            Plane.SetActive(true);
+            goPlane();
         }
     }
 
     void Update()
     {
+        walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
+        carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
+        planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
+
         if (Input.GetKey(KeyCode.Tab)) timer = 0f;
         if (Input.GetKey(KeyCode.Tab) || timer <= 5f)
         {
-            UISwapTypes.SetActive(true);
             timer += Time.deltaTime;
+
+            if (planeIsUnlocked)
+            {
+                UISwapTypes[0].SetActive(true);
+            }
+            if (carIsUnlocked)
+            {
+                UISwapTypes[1].SetActive(true);
+            }
+            if (walkIsUnlocked)
+            {
+                UISwapTypes[2].SetActive(true);
+            }
 
             if (Input.GetKeyDown(KeyCode.Alpha1) && Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
             {
@@ -89,7 +99,9 @@ public class SwappingBehavior : MonoBehaviour
         if (timer >= finishTimer && timer < 10f)
         {
             mouseOver();
-            UISwapTypes.SetActive(false);
+            UISwapTypes[0].SetActive(false);
+            UISwapTypes[1].SetActive(false);
+            UISwapTypes[2].SetActive(false);
             timer = 11f;
         }
 
@@ -97,84 +109,97 @@ public class SwappingBehavior : MonoBehaviour
         {
             imagination += .25f * Time.deltaTime;
         }
+
+        imaginationBar.value = imagination;
     }
 
     public void goWalk()
     {
-        timer = finishTimer;
-        imagination -= costOfWalk;
-        smoke.Play();
-        cameras[0].Render();
-        if (Car.activeInHierarchy == true)
+        Debug.Log("GoWalk Ran");
+        if (Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
         {
-            Walking.transform.position = new Vector3(Car.transform.position.x, Car.transform.position.y + 2.54f, Car.transform.position.z);
+            timer = finishTimer;
+            imagination -= costOfWalk;
+            smoke.Play();
+            cameras[0].Render();
+            if (Car.activeInHierarchy == true)
+            {
+                Walking.transform.position = new Vector3(Car.transform.position.x, Car.transform.position.y + 2.54f, Car.transform.position.z);
 
-            Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Car.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
-            Walking.transform.rotation = Quaternion.Euler(eulerRotation);
-        }
-        if (Plane.activeInHierarchy == true)
-        {
-            Walking.transform.position = new Vector3(Plane.transform.position.x, Plane.transform.position.y + 2.54f, Plane.transform.position.z);
+                Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Car.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
+                Walking.transform.rotation = Quaternion.Euler(eulerRotation);
+            }
+            if (Plane.activeInHierarchy == true)
+            {
+                Walking.transform.position = new Vector3(Plane.transform.position.x, Plane.transform.position.y + 2.54f, Plane.transform.position.z);
 
-            Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Plane.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
-            Walking.transform.rotation = Quaternion.Euler(eulerRotation);
+                Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Plane.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
+                Walking.transform.rotation = Quaternion.Euler(eulerRotation);
+            }
+            Walking.SetActive(true);
+            Car.SetActive(false);
+            Plane.SetActive(false);
         }
-        Walking.SetActive(true);
-        Car.SetActive(false);
-        Plane.SetActive(false);
     }
 
     public void goCar()
     {
-        timer = finishTimer;
-        imagination -= costOfCar;
-        smoke.Play();
-        cameras[1].Render();
-        if (Walking.activeInHierarchy == true)
+        Debug.Log("GoCar Ran");
+        if (Car.activeInHierarchy != true && carIsUnlocked && imagination - costOfCar > 0)
         {
-            Car.transform.position = new Vector3(Walking.transform.position.x, Walking.transform.position.y - 2.54f, Walking.transform.position.z);
+            timer = finishTimer;
+            imagination -= costOfCar;
+            smoke.Play();
+            cameras[1].Render();
+            if (Walking.activeInHierarchy == true)
+            {
+                Car.transform.position = new Vector3(Walking.transform.position.x, Walking.transform.position.y - 2.54f, Walking.transform.position.z);
 
-            Vector3 eulerRotation = new Vector3(Car.transform.eulerAngles.x, Walking.transform.eulerAngles.y, Car.transform.eulerAngles.z);
-            Car.transform.rotation = Quaternion.Euler(eulerRotation);
-        }
-        if (Plane.activeInHierarchy == true)
-        {
-            Car.transform.position = Plane.transform.position;
+                Vector3 eulerRotation = new Vector3(Car.transform.eulerAngles.x, Walking.transform.eulerAngles.y, Car.transform.eulerAngles.z);
+                Car.transform.rotation = Quaternion.Euler(eulerRotation);
+            }
+            if (Plane.activeInHierarchy == true)
+            {
+                Car.transform.position = Plane.transform.position;
 
-            Vector3 eulerRotation = new Vector3(Car.transform.eulerAngles.x, Plane.transform.eulerAngles.y, Car.transform.eulerAngles.z);
-            Car.transform.rotation = Quaternion.Euler(eulerRotation);
+                Vector3 eulerRotation = new Vector3(Car.transform.eulerAngles.x, Plane.transform.eulerAngles.y, Car.transform.eulerAngles.z);
+                Car.transform.rotation = Quaternion.Euler(eulerRotation);
+            }
+            Walking.SetActive(false);
+            Car.SetActive(true);
+            Plane.SetActive(false);
         }
-        Walking.SetActive(false);
-        Car.SetActive(true);
-        Plane.SetActive(false);
     }
 
     public void goPlane()
     {
-        timer = finishTimer;
-        imagination -= costOfPlane;
-        smoke.Play();
-        cameras[2].Render();
-        if (Walking.activeInHierarchy == true)
+        if (Plane.activeInHierarchy != true && planeIsUnlocked && imagination - costOfPlane > 0)
         {
-            Plane.transform.position = new Vector3(Walking.transform.position.x, Walking.transform.position.y - 2.54f, Walking.transform.position.z);
+            timer = finishTimer;
+            imagination -= costOfPlane;
+            smoke.Play();
+            cameras[2].Render();
+            if (Walking.activeInHierarchy == true)
+            {
+                Plane.transform.position = new Vector3(Walking.transform.position.x, Walking.transform.position.y - 2.54f, Walking.transform.position.z);
 
-            Vector3 eulerRotation = new Vector3(Plane.transform.eulerAngles.x, Walking.transform.eulerAngles.y, Plane.transform.eulerAngles.z);
-            Plane.transform.rotation = Quaternion.Euler(eulerRotation);
-        }
-        if (Car.activeInHierarchy == true)
-        {
-            Plane.transform.position = Car.transform.position;
+                Vector3 eulerRotation = new Vector3(Plane.transform.eulerAngles.x, Walking.transform.eulerAngles.y, Plane.transform.eulerAngles.z);
+                Plane.transform.rotation = Quaternion.Euler(eulerRotation);
+            }
+            if (Car.activeInHierarchy == true)
+            {
+                Plane.transform.position = Car.transform.position;
 
-            Vector3 eulerRotation = new Vector3(Plane.transform.eulerAngles.x, Car.transform.eulerAngles.y, Plane.transform.eulerAngles.z);
-            Plane.transform.rotation = Quaternion.Euler(eulerRotation);
+                Vector3 eulerRotation = new Vector3(Plane.transform.eulerAngles.x, Car.transform.eulerAngles.y, Plane.transform.eulerAngles.z);
+                Plane.transform.rotation = Quaternion.Euler(eulerRotation);
+            }
+            PlayerPlane pp = Plane.GetComponent<PlayerPlane>();
+            Walking.SetActive(false);
+            Car.SetActive(false);
+            Plane.SetActive(true);
+            pp.m_speed = 0;
+            pp.cameraTransform.rotation = new Quaternion(pp.cameraTransform.rotation.eulerAngles.x, pp.cameraTransform.rotation.eulerAngles.y, Plane.transform.rotation.eulerAngles.z, 90f);
         }
-        PlayerPlane pp = Plane.GetComponent<PlayerPlane>();
-        Walking.SetActive(false);
-        Car.SetActive(false);
-        Plane.SetActive(true);
-        pp.m_speed = 0;
-        pp.cameraTransform.rotation = new Quaternion(pp.cameraTransform.rotation.eulerAngles.x, pp.cameraTransform.rotation.eulerAngles.y, Plane.transform.rotation.eulerAngles.z, 360f);
     }
 
     private void mouseOver()
