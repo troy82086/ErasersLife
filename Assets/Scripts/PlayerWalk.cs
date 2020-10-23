@@ -39,7 +39,7 @@ public class PlayerWalk : MonoBehaviour
 
         player.transform.localPosition += FORWARD * forward;
 
-        if ((Input.GetKey(KeyCode.Space))&& touchingFloor)
+        if ((Input.GetKey(KeyCode.Space)) && touchingFloor)
         {
             rb.AddForce(new Vector3(0, jumpforce, 0));
         }

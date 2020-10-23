@@ -22,8 +22,7 @@ public class SwappingBehavior : MonoBehaviour
     private bool planeIsUnlocked;
 
     private float timer = 16f;
-    private float startAmount;
-
+    private float maxImagination;
 
     private int costOfWalk;
     private int costOfCar;
@@ -35,7 +34,7 @@ public class SwappingBehavior : MonoBehaviour
 
     private void Start()
     {
-        startAmount = imagination;
+        maxImagination = imagination;
         costOfWalk = Walking.GetComponent<PlayerWalk>().cost;
         costOfCar = Car.GetComponent<PlayerCar>().cost;
         costOfPlane = Plane.GetComponent<PlayerPlane>().cost;
@@ -56,6 +55,8 @@ public class SwappingBehavior : MonoBehaviour
         {
             goPlane();
         }
+
+        imagination = maxImagination;
     }
 
     void Update()
@@ -105,7 +106,7 @@ public class SwappingBehavior : MonoBehaviour
             timer = 11f;
         }
 
-        if (imagination < startAmount)
+        if (imagination < maxImagination)
         {
             imagination += .25f * Time.deltaTime;
         }
@@ -115,7 +116,6 @@ public class SwappingBehavior : MonoBehaviour
 
     public void goWalk()
     {
-        Debug.Log("GoWalk Ran");
         if (Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
         {
             timer = finishTimer;
@@ -144,7 +144,6 @@ public class SwappingBehavior : MonoBehaviour
 
     public void goCar()
     {
-        Debug.Log("GoCar Ran");
         if (Car.activeInHierarchy != true && carIsUnlocked && imagination - costOfCar > 0)
         {
             timer = finishTimer;
