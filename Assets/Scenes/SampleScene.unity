@@ -2841,7 +2841,7 @@ MonoBehaviour:
   jumpforce: 200
   walkforce: 30
   cost: 5
-  Unlocked: 0
+  Unlocked: 1
 --- !u!54 &6731851641081222826 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2046407784006699736, guid: c4fb37c52815f344996a582b361da2a9,
