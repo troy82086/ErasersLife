@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerPlane : MonoBehaviour
 {
     [SerializeField] Transform player = null;
-    [SerializeField] int horizontalSpeed = 1;
     [SerializeField] int verticalSpeed = 1;
-    [SerializeField] int rotatationSpeed = 1;
+    [SerializeField] int rollSpeed = 1;
+    [SerializeField] int yawSpeed = 1;
+    [SerializeField] int pitchSpeed = 1;
     [SerializeField] float maxSpeed = 5;
     [SerializeField] float minSpeed = -5;
     [SerializeField] float idleSpeed = 4f;
@@ -26,20 +27,19 @@ public class PlayerPlane : MonoBehaviour
 
     void Update()
     {
-        Transform par = transform.parent.transform;
-        transform.rotation = Quaternion.identity;
-
         Vector3 velocity = Vector3.zero;
-        velocity.z = verticalSpeed * Input.GetAxis("Up and Down");
+        velocity.z = verticalSpeed * Input.GetAxis("W and S");
 
-        float pitch = verticalSpeed * Input.GetAxis("Up and Down");
-        float roll = horizontalSpeed * Input.GetAxis("A and D");
-        float yaw = horizontalSpeed * Input.GetAxis("Left and Right");
+        float pitch = pitchSpeed * Input.GetAxis("Up and Down");
+        float roll = rollSpeed * Input.GetAxis("A and D");
+        float yaw = yawSpeed * Input.GetAxis("Left and Right");
 
-        transform.RotateAround(transform.position, par.right, pitch);
-        transform.RotateAround(transform.position, par.up, -yaw);
-        transform.RotateAround(transform.position, par.forward, roll);
-        
+        Transform par = transform.parent.transform;
+
+        transform.RotateAround(transform.position, par.right, pitch * Time.deltaTime);
+        transform.RotateAround(transform.position, par.up, -yaw * Time.deltaTime);
+        transform.RotateAround(transform.position, par.forward, roll * Time.deltaTime);
+
         if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
         {
             m_speed += 0.5f;
