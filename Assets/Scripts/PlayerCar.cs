@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerCar : MonoBehaviour
 {
     [SerializeField] Transform player = null;
+    [SerializeField] Transform camera = null;
     [SerializeField] int turnSpeed = 1;
     [SerializeField] int m_speed = 1;
 
@@ -28,6 +29,9 @@ public class PlayerCar : MonoBehaviour
 
         Vector3 FORWARD = player.TransformDirection(Vector3.up);
 
-        player.transform.localPosition += FORWARD * forward;
+        player.localPosition += FORWARD * forward;
+
+        camera.localPosition = player.localPosition;
+        camera.eulerAngles = new Vector3(camera.eulerAngles.x, 0, player.eulerAngles.z);
     }
 }

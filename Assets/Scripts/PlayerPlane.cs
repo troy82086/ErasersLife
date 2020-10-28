@@ -40,12 +40,12 @@ public class PlayerPlane : MonoBehaviour
         Quaternion rotation1 = player.rotation;
         rotation1.eulerAngles -= new Vector3(0, -yaw, 0);
         player.transform.rotation = Quaternion.Lerp(player.rotation, rotation1, Time.deltaTime * 10);
-        
+
         Quaternion rotation3 = player.rotation;
         rotation3.eulerAngles -= new Vector3(0, 0, roll);
         player.transform.rotation = Quaternion.Lerp(player.rotation, rotation3, Time.deltaTime * 10);
 
-        
+
         if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
         {
             m_speed += 0.5f;
@@ -65,12 +65,10 @@ public class PlayerPlane : MonoBehaviour
 
         if (m_speed < fallingSpeed)
         {
-            rb.isKinematic = false;
             rb.useGravity = true;
         }
         else
         {
-            rb.isKinematic = true;
             rb.useGravity = false;
         }
 

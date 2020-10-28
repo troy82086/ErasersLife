@@ -7,6 +7,7 @@ public class PlayerWalk : MonoBehaviour
 {
     [SerializeField] Rigidbody rb = null;
     [SerializeField] Transform player = null;
+    [SerializeField] Transform camera = null;
     [SerializeField] int horizontalSpeed = 1;
     [SerializeField] int m_speed = 1;
     [SerializeField] int jumpforce = 5;
@@ -43,6 +44,9 @@ public class PlayerWalk : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, jumpforce, 0));
         }
+
+        camera.localPosition = player.localPosition;
+        camera.eulerAngles = new Vector3(camera.eulerAngles.x, 0, player.eulerAngles.y);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -64,6 +64,13 @@ public class SwappingBehavior : MonoBehaviour
         walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
         carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
         planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
+        
+        if (Input.GetKey(KeyCode.RightShift))
+        {
+            if (Walking.activeInHierarchy) Walking.transform.eulerAngles = new Vector3(0, Walking.transform.eulerAngles.y, 0);
+            if (Plane.activeInHierarchy) Plane.transform.eulerAngles = new Vector3(-90, 0, Plane.transform.eulerAngles.z);
+            if (Car.activeInHierarchy) Car.transform.eulerAngles = new Vector3(-90, Car.transform.eulerAngles.y, Car.transform.eulerAngles.z);
+        }
 
         if (Input.GetKey(KeyCode.Tab)) timer = 0f;
         if (Input.GetKey(KeyCode.Tab) || timer <= 5f)
