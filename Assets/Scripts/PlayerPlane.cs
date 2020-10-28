@@ -26,6 +26,9 @@ public class PlayerPlane : MonoBehaviour
 
     void Update()
     {
+        Transform par = transform.parent.transform;
+        transform.rotation = Quaternion.identity;
+
         Vector3 velocity = Vector3.zero;
         velocity.z = verticalSpeed * Input.GetAxis("Up and Down");
 
@@ -33,19 +36,10 @@ public class PlayerPlane : MonoBehaviour
         float roll = horizontalSpeed * Input.GetAxis("A and D");
         float yaw = horizontalSpeed * Input.GetAxis("Left and Right");
 
-        Quaternion rotation2 = player.rotation;
-        rotation2.eulerAngles -= new Vector3(pitch, 0, 0);
-        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation2, Time.deltaTime * 10);
-
-        Quaternion rotation1 = player.rotation;
-        rotation1.eulerAngles -= new Vector3(0, -yaw, 0);
-        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation1, Time.deltaTime * 10);
-
-        Quaternion rotation3 = player.rotation;
-        rotation3.eulerAngles -= new Vector3(0, 0, roll);
-        player.transform.rotation = Quaternion.Lerp(player.rotation, rotation3, Time.deltaTime * 10);
-
-
+        transform.RotateAround(transform.position, par.right, pitch);
+        transform.RotateAround(transform.position, par.up, -yaw);
+        transform.RotateAround(transform.position, par.forward, roll);
+        
         if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
         {
             m_speed += 0.5f;
@@ -78,10 +72,7 @@ public class PlayerPlane : MonoBehaviour
 
         player.localPosition += FORWARD * forward;
 
-        Quaternion newRotation = cameraTransform.rotation;
-        newRotation.eulerAngles -= new Vector3(0, -yaw, 0);
-
-        cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, newRotation, Time.deltaTime * 10);
+        cameraTransform.eulerAngles = new Vector3(90, 0, -player.eulerAngles.y + 180);
         cameraTransform.localPosition = new Vector3(player.localPosition.x, cameraTransform.localPosition.y, player.localPosition.z);
     }
 }
