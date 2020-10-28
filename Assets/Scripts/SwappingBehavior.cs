@@ -15,7 +15,7 @@ public class SwappingBehavior : MonoBehaviour
     [SerializeField] GameObject Plane = null;
     [SerializeField] GameObject[] UISwapTypes = null;
     [SerializeField] Slider imaginationBar = null;
-    [SerializeField] ParticleSystem smoke = null;
+    [SerializeField] ParticleSystem[] smoke = null;
 
     private bool walkIsUnlocked;
     private bool carIsUnlocked;
@@ -127,9 +127,9 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
         {
+            smoke[0].Play();
             timer = finishTimer;
             imagination -= costOfWalk;
-            smoke.Play();
             cameras[0].Render();
             if (Car.activeInHierarchy == true)
             {
@@ -155,9 +155,9 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Car.activeInHierarchy != true && carIsUnlocked && imagination - costOfCar > 0)
         {
+            smoke[1].Play();
             timer = finishTimer;
             imagination -= costOfCar;
-            smoke.Play();
             cameras[1].Render();
             if (Walking.activeInHierarchy == true)
             {
@@ -183,9 +183,9 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Plane.activeInHierarchy != true && planeIsUnlocked && imagination - costOfPlane > 0)
         {
+            smoke[2].Play();
             timer = finishTimer;
             imagination -= costOfPlane;
-            smoke.Play();
             cameras[2].Render();
             if (Walking.activeInHierarchy == true)
             {
