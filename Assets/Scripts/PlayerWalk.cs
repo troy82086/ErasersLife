@@ -45,8 +45,8 @@ public class PlayerWalk : MonoBehaviour
             rb.AddForce(new Vector3(0, jumpforce, 0));
         }
 
-        camera.localPosition = player.localPosition;
-        camera.eulerAngles = new Vector3(camera.eulerAngles.x, 0, player.eulerAngles.y);
+        camera.localPosition = new Vector3(player.localPosition.x, camera.localPosition.y, player.localPosition.z);
+        camera.eulerAngles = new Vector3(camera.eulerAngles.x, 0, -player.eulerAngles.y + 180);
     }
 
     private void OnCollisionEnter(Collision collision)
