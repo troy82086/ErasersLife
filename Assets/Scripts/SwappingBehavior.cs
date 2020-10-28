@@ -64,7 +64,9 @@ public class SwappingBehavior : MonoBehaviour
         walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
         carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
         planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
-        
+
+        if (Input.GetKey(KeyCode.Escape)) Menu();
+
         if (Input.GetKey(KeyCode.RightShift))
         {
             if (Walking.activeInHierarchy) Walking.transform.eulerAngles = new Vector3(0, Walking.transform.eulerAngles.y, 0);
@@ -233,5 +235,10 @@ public class SwappingBehavior : MonoBehaviour
                 goWalk();
             }
         }
+    }
+
+    private void Menu()
+    {
+
     }
 }
