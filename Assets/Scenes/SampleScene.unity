@@ -5619,7 +5619,7 @@ PrefabInstance:
     - target: {fileID: 8594242747569145529, guid: 5b0ad3939cba4e7448f8d5c87ab84f5c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939419388954958851, guid: 5b0ad3939cba4e7448f8d5c87ab84f5c,
         type: 3}
@@ -5644,12 +5644,12 @@ PrefabInstance:
     - target: {fileID: 8939419388954958851, guid: 5b0ad3939cba4e7448f8d5c87ab84f5c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939419388954958851, guid: 5b0ad3939cba4e7448f8d5c87ab84f5c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939419388954958851, guid: 5b0ad3939cba4e7448f8d5c87ab84f5c,
         type: 3}
@@ -5716,7 +5716,7 @@ MonoBehaviour:
   turnSpeed: 3
   m_speed: 10
   cost: 5
-  Unlocked: 0
+  Unlocked: 1
 --- !u!65 &4722763819131715938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5875,7 +5875,7 @@ PrefabInstance:
     - target: {fileID: 1622030580159217468, guid: 005e404657115ee4f964c7b7da72fe11,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2146330898566849926, guid: 005e404657115ee4f964c7b7da72fe11,
         type: 3}
@@ -5900,12 +5900,12 @@ PrefabInstance:
     - target: {fileID: 2146330898566849926, guid: 005e404657115ee4f964c7b7da72fe11,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2146330898566849926, guid: 005e404657115ee4f964c7b7da72fe11,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2146330898566849926, guid: 005e404657115ee4f964c7b7da72fe11,
         type: 3}
@@ -5988,9 +5988,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8606350314279523859}
-  horizontalSpeed: 5
   verticalSpeed: 5
-  rotatationSpeed: 5
+  rollSpeed: 20
+  yawSpeed: 20
+  pitchSpeed: 20
   maxSpeed: 20
   minSpeed: -20
   idleSpeed: 2
