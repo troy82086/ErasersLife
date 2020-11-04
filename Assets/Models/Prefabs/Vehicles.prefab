@@ -28450,7 +28450,7 @@ MonoBehaviour:
   camera: {fileID: 3154547155785935153}
   horizontalSpeed: 5
   m_speed: 8
-  jumpforce: 200
+  jumpforce: 1000
   walkforce: 30
   cost: 5
   Unlocked: 1

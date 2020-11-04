@@ -1371,8 +1371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   houses:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1011383488}
+  - {fileID: 1407577617}
 --- !u!4 &803965500
 Transform:
   m_ObjectHideFlags: 0
@@ -1644,6 +1644,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 956360916}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1011383488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1202611304506356561, guid: a1c9e58b14267454da09dd6dbd25f2e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1202611305668881334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2e7c1329ac9774e956be37ae9f8cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1119163832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1993,6 +2005,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 5f62ea725ac15c145bade1597645729b, type: 3}
+--- !u!114 &1407577617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4566371728202347935, guid: 7707551f1871e5d42b9dc9ddf0b46e41,
+    type: 3}
+  m_PrefabInstance: {fileID: 4566371728179669473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2e7c1329ac9774e956be37ae9f8cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1417291654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3199,6 +3223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: House2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202611304506356561, guid: a1c9e58b14267454da09dd6dbd25f2e0,
+        type: 3}
+      propertyPath: isFinish
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c9e58b14267454da09dd6dbd25f2e0, type: 3}
