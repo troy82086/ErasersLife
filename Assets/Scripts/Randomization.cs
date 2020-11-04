@@ -8,6 +8,8 @@ public class Randomization : MonoBehaviour
 
     void Start()
     {
-        houses[Random.Range(0, houses.Length)].isFinish = true;
+        int i = Random.Range(0, houses.Length);
+        houses[i].isFinish = true;
+        Debug.Log(houses[i].name);
     }
 }

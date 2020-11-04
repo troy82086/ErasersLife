@@ -1,9 +1,44 @@
 fileFormatVersion: 2
-guid: 7bc4c63855895cc4eb99d47e46e4149f
+guid: aed0a33f6d7f02a42a70869732f4cb94
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Decking
+    second: {fileID: 2100000, guid: 240e4167e62373840b6f2ec4dd95888c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
+    second: {fileID: 2100000, guid: 4a6a8d825ab18da45b31d65630b9a100, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roofing
+    second: {fileID: 2100000, guid: a138282302603e047ba6dc79681899d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Siding
+    second: {fileID: 2100000, guid: d414daabf4ee9f94d8dd9cabbce0582e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowL
+    second: {fileID: 2100000, guid: f5f3d384f5660d64194bbbceae4f9154, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowS
+    second: {fileID: 2100000, guid: 1456fdf2374b3de4a81ed3ac62a24bd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: d2108df6c372d694bb449d4bb90b579b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -36,7 +71,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
