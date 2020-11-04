@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HouseBehavior : MonoBehaviour
 {
-    [SerializeField] Transform[] erasers = null;
+    [SerializeField] string Tag = "Player";
     [SerializeField] GameObject door = null;
     [SerializeField] bool isFinish = false;
+    [SerializeField] string endScene = "EndScene";
 
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.collider.CompareTag(Tag) && isFinish)
+        {
+            SceneManager.LoadScene(endScene);
+        }
     }
 }
