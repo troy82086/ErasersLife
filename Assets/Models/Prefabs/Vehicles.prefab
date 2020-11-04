@@ -28169,12 +28169,12 @@ MonoBehaviour:
   rollSpeed: 20
   yawSpeed: 20
   pitchSpeed: 20
-  maxSpeed: 20
-  minSpeed: -20
-  idleSpeed: 2
-  fallingSpeed: 10
+  maxSpeed: 50
+  minSpeed: -50
+  idleSpeed: 5
+  fallingSpeed: 20
   cameraTransform: {fileID: 3154547155785935153}
-  cost: 5
+  cost: 25
   Unlocked: 1
   m_speed: 0
 --- !u!1 &6642252509769798005
@@ -28434,11 +28434,11 @@ MonoBehaviour:
   player: {fileID: 8562843310955421075}
   camera: {fileID: 3154547155785935153}
   horizontalSpeed: 5
-  m_speed: 5
+  m_speed: 8
   jumpforce: 200
   walkforce: 30
   cost: 5
-  Unlocked: 0
+  Unlocked: 1
 --- !u!1 &7983400098763101796
 GameObject:
   m_ObjectHideFlags: 0
@@ -37960,6 +37960,6 @@ MonoBehaviour:
   player: {fileID: 6414284034630644580}
   camera: {fileID: 3154547155785935153}
   turnSpeed: 3
-  m_speed: 10
-  cost: 5
+  m_speed: 20
+  cost: 10
   Unlocked: 1
