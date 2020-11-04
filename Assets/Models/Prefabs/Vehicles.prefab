@@ -28053,7 +28053,7 @@ GameObject:
   - component: {fileID: 4404015443362146624}
   m_Layer: 0
   m_Name: EraserPlaneBegining
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28321,7 +28321,7 @@ GameObject:
   - component: {fileID: 4181739370767828782}
   m_Layer: 0
   m_Name: EraserBegining
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37847,7 +37847,7 @@ GameObject:
   - component: {fileID: 3285904963641577524}
   m_Layer: 0
   m_Name: EraserCarBegining
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

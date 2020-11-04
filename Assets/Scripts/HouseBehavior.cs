@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class HouseBehavior : MonoBehaviour
 {
     [SerializeField] string Tag = "Player";
-    [SerializeField] GameObject door = null;
     [SerializeField] string endScene = "EndScene";
     
     public bool isFinish = false;
@@ -15,7 +14,8 @@ public class HouseBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag(Tag) && isFinish)
         {
-            SceneManager.LoadScene(endScene);
+            Debug.Log("Finished");
+            //SceneManager.LoadScene(endScene);
         }
     }
 }
