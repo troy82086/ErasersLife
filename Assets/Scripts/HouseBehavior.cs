@@ -7,8 +7,9 @@ public class HouseBehavior : MonoBehaviour
 {
     [SerializeField] string Tag = "Player";
     [SerializeField] GameObject door = null;
-    [SerializeField] bool isFinish = false;
     [SerializeField] string endScene = "EndScene";
+    
+    public bool isFinish = false;
 
     private void OnCollisionEnter(Collision collision)
     {
