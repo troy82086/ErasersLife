@@ -14,8 +14,7 @@ public class HouseBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag(Tag) && isFinish)
         {
-            Debug.Log("Finished");
-            //SceneManager.LoadScene(endScene);
+            SceneManager.LoadScene(endScene);
         }
     }
 }
