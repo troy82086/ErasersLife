@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 4b8382c8f5077af418d01cbed73b04b2
+guid: 06433e1c8f7dbea4f87be76000be8b0b
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Meshes1_Siding
+    second: {fileID: 2100000, guid: 197311689cd9fe94da8fb7af39be0f58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Meshes_Roof
+    second: {fileID: 2100000, guid: fa30669b180448d4e8d87eaa64d1e229, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Meshes_Siding
+    second: {fileID: 2100000, guid: 8d624d6bcebdd6b43b6d14344657eb0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: a3daa6fd329c9c84c845ef53dc23244b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -36,7 +56,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
