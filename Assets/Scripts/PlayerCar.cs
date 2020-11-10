@@ -7,6 +7,7 @@ public class PlayerCar : MonoBehaviour
 {
     [SerializeField] Transform player = null;
     [SerializeField] Transform camera = null;
+    [SerializeField] Transform pauseCamera = null;
     [SerializeField] int turnSpeed = 1;
     [SerializeField] int m_speed = 1;
 
@@ -34,5 +35,7 @@ public class PlayerCar : MonoBehaviour
 
         camera.localPosition = new Vector3(player.localPosition.x, camera.localPosition.y, player.localPosition.z);
         camera.eulerAngles = new Vector3(camera.eulerAngles.x, 0, -player.eulerAngles.y + 180);
+        pauseCamera.localPosition = new Vector3(player.localPosition.x, pauseCamera.localPosition.y, player.localPosition.z);
+        pauseCamera.eulerAngles = new Vector3(pauseCamera.eulerAngles.x, 0, -player.eulerAngles.y + 180);
     }
 }

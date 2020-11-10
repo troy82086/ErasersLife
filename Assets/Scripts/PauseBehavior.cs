@@ -16,7 +16,5 @@ public class PauseBehavior : MonoBehaviour
 
         if (pauseCanvas.enabled) Time.timeScale = 0;
         if (!pauseCanvas.enabled) Time.timeScale = 1;
-
-
     }
 }

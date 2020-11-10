@@ -13,6 +13,7 @@ public class PlayerPlane : MonoBehaviour
     [SerializeField] float minSpeed = -5;
     [SerializeField] float idleSpeed = 4f;
     [SerializeField] float fallingSpeed = 3.9f;
+    [SerializeField] Transform pauseCamera = null;
 
     public Transform cameraTransform = null;
     public int cost = 5;
@@ -36,8 +37,8 @@ public class PlayerPlane : MonoBehaviour
 
         Transform par = transform.parent.transform;
 
-        transform.RotateAround(transform.position, par.right, pitch * Time.deltaTime);
-        transform.RotateAround(transform.position, par.up, -yaw * Time.deltaTime);
+        transform.RotateAround(transform.position, par.right, -pitch * Time.deltaTime);
+        transform.RotateAround(transform.position, par.up, yaw * Time.deltaTime);
         transform.RotateAround(transform.position, par.forward, roll * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
@@ -74,6 +75,8 @@ public class PlayerPlane : MonoBehaviour
 
         cameraTransform.eulerAngles = new Vector3(90, 0, -player.eulerAngles.y + 180);
         cameraTransform.localPosition = new Vector3(player.localPosition.x, cameraTransform.localPosition.y, player.localPosition.z);
+        pauseCamera.localPosition = new Vector3(player.localPosition.x, pauseCamera.localPosition.y, player.localPosition.z);
+        pauseCamera.eulerAngles = new Vector3(pauseCamera.eulerAngles.x, 0, -player.eulerAngles.y + 180);
     }
 }
 
