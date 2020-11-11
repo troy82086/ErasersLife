@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,22 +10,28 @@ public class SettingsValues : MonoBehaviour
     [SerializeField] Slider mini = null;
     [SerializeField] Slider vol = null;
     [SerializeField] TMP_Dropdown iM = null;
+    [SerializeField] GameObject SettingsCanvas = null;
 
-    private int miniPov = 300;
-    private int volume = 50;
-    private int impericalOrMetric = 1;
+    [Serializable]
+    public class serializeValues
+    {
+        public int miniPov;
+        public int volume;
+        public int impericalOrMetric;
+    }
+
+    private serializeValues values;
 
     private void Awake()
     {
-        mini.value = miniPov;
-        vol.value = volume;
-        iM.value = impericalOrMetric;
+        DontDestroyOnLoad(SettingsCanvas);
+        values = new serializeValues();
+        mini.value = values.miniPov;
+        vol.value = values.volume;
+        iM.value = values.impericalOrMetric;
     }
 
-    void Update()
-    {
-        if (miniPov != mini.value) miniPov = (int)mini.value;
-        if (volume != vol.value) volume = (int)vol.value;
-        if (impericalOrMetric != iM.value) impericalOrMetric = iM.value;
-    }
+    public void MiniMapValueChange() { values.miniPov = (int)mini.value; }
+    public void VolumeValueChange() { values.volume = (int)vol.value; }
+    public void ImpericalOrMetricValueChange() { values.impericalOrMetric = iM.value; }
 }

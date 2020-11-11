@@ -1062,7 +1062,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4166333395159273538}
+        m_MethodName: ImpericalOrMetricValueChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3262835422100356330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,12 +1809,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 492297820941867067}
-  m_Father: {fileID: 6997159402305136578}
+  m_Father: {fileID: 6414866566851768034}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5, y: 4.5}
+  m_AnchoredPosition: {x: 110, y: 0}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2977557931549181756
@@ -2152,12 +2163,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: set_orthographicSize
-        m_Mode: 0
+      - m_Target: {fileID: 4166333395159273538}
+        m_MethodName: MiniMapValueChange
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2375,6 +2397,7 @@ GameObject:
   - component: {fileID: 6997159402089196227}
   - component: {fileID: 6997159402089196224}
   - component: {fileID: 6997159402089196225}
+  - component: {fileID: 4166333395159273538}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -2462,6 +2485,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4166333395159273538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6997159402089196238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dc57f7035a68643af191d0f63c01cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mini: {fileID: 6997159400683004118}
+  vol: {fileID: 9057914326592592739}
+  iM: {fileID: 3658191734536828162}
+  SettingsCanvas: {fileID: 6997159402089196238}
 --- !u!1 &6997159402116971040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2679,7 +2718,6 @@ RectTransform:
   - {fileID: 6414866566851768034}
   - {fileID: 2207115974671461410}
   - {fileID: 4679079477572630808}
-  - {fileID: 8121828329834645013}
   m_Father: {fileID: 6997159402116971043}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3704,6 +3742,7 @@ RectTransform:
   - {fileID: 7913084200878760887}
   - {fileID: 8111284752273023234}
   - {fileID: 3519887638739537572}
+  - {fileID: 8121828329834645013}
   m_Father: {fileID: 6997159402305136578}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3758,13 +3797,13 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 50
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: set_orthographicSize
-        m_Mode: 0
+      - m_Target: {fileID: 4166333395159273538}
+        m_MethodName: VolumeValueChange
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
