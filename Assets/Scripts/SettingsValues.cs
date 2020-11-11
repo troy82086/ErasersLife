@@ -13,25 +13,31 @@ public class SettingsValues : MonoBehaviour
     [SerializeField] GameObject SettingsCanvas = null;
 
     [Serializable]
-    public class serializeValues
+    public static class serializeValues
     {
-        public int miniPov;
-        public int volume;
-        public int impericalOrMetric;
+        public static int miniPov;
+        public static int volume;
+        public static int impericalOrMetric;
     }
 
-    private serializeValues values;
+    private int miniPov;
+    private int volume;
+    private int impericalOrMetric;
 
     private void Awake()
     {
-        DontDestroyOnLoad(SettingsCanvas);
-        values = new serializeValues();
-        mini.value = values.miniPov;
-        vol.value = values.volume;
-        iM.value = values.impericalOrMetric;
+        miniPov = serializeValues.miniPov;
+        volume = serializeValues.volume;
+        impericalOrMetric = serializeValues.impericalOrMetric;
+        mini.value = miniPov;
+        vol.value = volume;
+        iM.value = impericalOrMetric;
+        Debug.Log(miniPov);
+        Debug.Log(volume);
+        Debug.Log(impericalOrMetric);
     }
 
-    public void MiniMapValueChange() { values.miniPov = (int)mini.value; }
-    public void VolumeValueChange() { values.volume = (int)vol.value; }
-    public void ImpericalOrMetricValueChange() { values.impericalOrMetric = iM.value; }
+    public void MiniMapValueChange() { serializeValues.miniPov = (int)mini.value; }
+    public void VolumeValueChange() { serializeValues.volume = (int)vol.value; }
+    public void ImpericalOrMetricValueChange() { serializeValues.impericalOrMetric = iM.value; }
 }
