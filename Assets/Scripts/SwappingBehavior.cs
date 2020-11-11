@@ -180,7 +180,6 @@ public class SwappingBehavior : MonoBehaviour
 
     public void goPlane()
     {
-        Debug.Log("GoPlane");
         if (Plane.activeInHierarchy != true && planeIsUnlocked && imagination - costOfPlane > 0)
         {
             smoke[2].Play();
@@ -207,7 +206,6 @@ public class SwappingBehavior : MonoBehaviour
             Plane.SetActive(true);
             pp.m_speed = 0;
             pp.cameraTransform.rotation = new Quaternion(pp.cameraTransform.rotation.eulerAngles.x, pp.cameraTransform.rotation.eulerAngles.y, Plane.transform.rotation.eulerAngles.z, 90f);
-            Debug.Log("GoPlane Complete: " + Plane.activeInHierarchy);
         }
     }
 
