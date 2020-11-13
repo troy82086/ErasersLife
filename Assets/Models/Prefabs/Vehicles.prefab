@@ -52,7 +52,6 @@ MonoBehaviour:
   - {fileID: 4577092924701750465}
   - {fileID: 4577092924142523953}
   - {fileID: 4577092924354548943}
-  imagination: 100
   finishTimer: 2.5
   Walking: {fileID: 7127314356949045597}
   Car: {fileID: 9083682829863372458}
@@ -62,6 +61,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   imaginationBar: {fileID: 0}
+  energyBar: {fileID: 0}
   smoke:
   - {fileID: 4577092924156076070}
   - {fileID: 4577092923783565561}
@@ -28194,6 +28194,7 @@ MonoBehaviour:
   cost: 25
   Unlocked: 1
   m_speed: 0
+  energyUsage: 7
 --- !u!1 &6642252509769798005
 GameObject:
   m_ObjectHideFlags: 0
@@ -28456,6 +28457,7 @@ MonoBehaviour:
   jumpforce: 1000
   walkforce: 30
   cost: 5
+  energyUsage: -1
   Unlocked: 1
 --- !u!1 &7983400098763101796
 GameObject:
@@ -38093,5 +38095,6 @@ MonoBehaviour:
   pauseCamera: {fileID: 9033247172883948055}
   turnSpeed: 3
   m_speed: 20
+  energyUsage: 5
   cost: 10
   Unlocked: 1
