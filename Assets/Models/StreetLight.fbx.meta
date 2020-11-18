@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 012b0199f0de8294fa499452ebcddcd0
+guid: 306d93d62f8f9bf46b19cc3f6cc40eb8
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: StopSignPole
-    second: {fileID: 2100000, guid: c98a539b9eb8fde4b897a9c1523815b0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Stopsign
-    second: {fileID: 2100000, guid: b10cffca935a25f4f9cd946877c8c51c, type: 2}
+      name: blinn1
+    second: {fileID: 2100000, guid: 9c27d04dc277a804787e1f02f76adcee, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
