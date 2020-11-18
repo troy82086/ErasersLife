@@ -15,6 +15,7 @@ public class PlayerWalk : MonoBehaviour
     [SerializeField] int walkforce = 5;
 
     public int cost = 5;
+    public float energyUsage = -1;
     public bool Unlocked = false;
     private bool touchingFloor;
 

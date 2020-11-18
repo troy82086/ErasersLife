@@ -3,19 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SwappingBehavior : MonoBehaviour
 {
     [SerializeField] Camera[] cameras = null;
-    [SerializeField] float imagination = 100;
+    [SerializeField] static float imagination = 100;
+    [SerializeField] static float energy = 100;
     [SerializeField] float finishTimer = 2.5f;
     [SerializeField] GameObject Walking = null;
     [SerializeField] GameObject Car = null;
     [SerializeField] GameObject Plane = null;
     [SerializeField] GameObject[] UISwapTypes = null;
     [SerializeField] Slider imaginationBar = null;
+    [SerializeField] Slider energyBar = null;
     [SerializeField] ParticleSystem[] smoke = null;
+    [SerializeField] Canvas energyWarning;
+    [SerializeField] string gameover;
 
     private bool walkIsUnlocked;
     private bool carIsUnlocked;
@@ -23,6 +28,7 @@ public class SwappingBehavior : MonoBehaviour
 
     private float timer = 16f;
     private float maxImagination;
+    private float maxEnergy;
 
     private int costOfWalk;
     private int costOfCar;
@@ -35,6 +41,7 @@ public class SwappingBehavior : MonoBehaviour
     private void Start()
     {
         maxImagination = imagination;
+        maxEnergy = energy;
         costOfWalk = Walking.GetComponent<PlayerWalk>().cost;
         costOfCar = Car.GetComponent<PlayerCar>().cost;
         costOfPlane = Plane.GetComponent<PlayerPlane>().cost;
@@ -119,7 +126,35 @@ public class SwappingBehavior : MonoBehaviour
             imagination += .25f * Time.deltaTime;
         }
 
+        if (Walking.activeInHierarchy)
+        {
+            energy -= (Walking.GetComponent<PlayerWalk>().energyUsage / 10) * Time.deltaTime;
+        }
+        else if (Car.activeInHierarchy)
+        {
+            energy -= (Car.GetComponent<PlayerCar>().energyUsage / 10) * Time.deltaTime;
+        }
+        else if (Plane.activeInHierarchy)
+        {
+            energy -= (Plane.GetComponent<PlayerPlane>().energyUsage / 10) * Time.deltaTime;
+        }
+
+        if (energy <= 25)
+        {
+            energyWarning.enabled = true;
+        }
+        else
+        {
+            energyWarning.enabled = false;
+        }
+
+        if (energy <= 0)
+        {
+            SceneManager.LoadScene(gameover);
+        }
+
         imaginationBar.value = imagination;
+        energyBar.value = energy;
     }
 
     public void goWalk()

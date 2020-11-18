@@ -15,9 +15,9 @@ public class SettingsValues : MonoBehaviour
     [Serializable]
     public static class serializeValues
     {
-        public static int miniPov;
-        public static int volume;
-        public static int impericalOrMetric;
+        public static int miniPov = 300;
+        public static int volume = 50;
+        public static int impericalOrMetric = 1;
     }
 
     private int miniPov;
@@ -32,9 +32,6 @@ public class SettingsValues : MonoBehaviour
         mini.value = miniPov;
         vol.value = volume;
         iM.value = impericalOrMetric;
-        Debug.Log(miniPov);
-        Debug.Log(volume);
-        Debug.Log(impericalOrMetric);
     }
 
     public void MiniMapValueChange() { serializeValues.miniPov = (int)mini.value; }

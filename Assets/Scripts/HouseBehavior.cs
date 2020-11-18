@@ -7,6 +7,7 @@ public class HouseBehavior : MonoBehaviour
 {
     [SerializeField] string Tag = "Player";
     [SerializeField] string endScene = "EndScene";
+    public string[] hintDescriptions;
     
     public bool isFinish = false;
 

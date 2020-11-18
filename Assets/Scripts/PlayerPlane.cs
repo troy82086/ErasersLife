@@ -19,6 +19,7 @@ public class PlayerPlane : MonoBehaviour
     public int cost = 5;
     public bool Unlocked = false;
     public float m_speed = 0;
+    public float energyUsage = 1;
     private Rigidbody rb;
 
     private void Start()
