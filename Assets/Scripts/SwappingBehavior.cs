@@ -125,21 +125,23 @@ public class SwappingBehavior : MonoBehaviour
         {
             imagination += .25f * Time.deltaTime;
         }
+        if (energy <= maxEnergy && energy > -1)
+        {
+            if (Walking.activeInHierarchy)
+            {
+                energy -= (Walking.GetComponent<PlayerWalk>().energyUsage / 10) * Time.deltaTime;
+            }
+            else if (Car.activeInHierarchy)
+            {
+                energy -= (Car.GetComponent<PlayerCar>().energyUsage / 10) * Time.deltaTime;
+            }
+            else if (Plane.activeInHierarchy)
+            {
+                energy -= (Plane.GetComponent<PlayerPlane>().energyUsage / 10) * Time.deltaTime;
+            }
+        }
 
-        if (Walking.activeInHierarchy)
-        {
-            energy -= (Walking.GetComponent<PlayerWalk>().energyUsage / 10) * Time.deltaTime;
-        }
-        else if (Car.activeInHierarchy)
-        {
-            energy -= (Car.GetComponent<PlayerCar>().energyUsage / 10) * Time.deltaTime;
-        }
-        else if (Plane.activeInHierarchy)
-        {
-            energy -= (Plane.GetComponent<PlayerPlane>().energyUsage / 10) * Time.deltaTime;
-        }
-
-        if (energy <= 25)
+        if (energy <= 25 && Walking.activeInHierarchy != true)
         {
             energyWarning.enabled = true;
         }
