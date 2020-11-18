@@ -128,18 +128,18 @@ public class SwappingBehavior : MonoBehaviour
 
         if (Walking.activeInHierarchy)
         {
-            energy -= Walking.GetComponent<PlayerWalk>().energyUsage * Time.deltaTime;
+            energy -= (Walking.GetComponent<PlayerWalk>().energyUsage / 10) * Time.deltaTime;
         }
         else if (Car.activeInHierarchy)
         {
-            energy -= Car.GetComponent<PlayerCar>().energyUsage * Time.deltaTime;
+            energy -= (Car.GetComponent<PlayerCar>().energyUsage / 10) * Time.deltaTime;
         }
         else if (Plane.activeInHierarchy)
         {
-            energy -= Plane.GetComponent<PlayerPlane>().energyUsage * Time.deltaTime;
+            energy -= (Plane.GetComponent<PlayerPlane>().energyUsage / 10) * Time.deltaTime;
         }
 
-        if(energy <= 25)
+        if (energy <= 25)
         {
             energyWarning.enabled = true;
         }
@@ -148,7 +148,7 @@ public class SwappingBehavior : MonoBehaviour
             energyWarning.enabled = false;
         }
 
-        if(energy <= 0)
+        if (energy <= 0)
         {
             SceneManager.LoadScene(gameover);
         }
