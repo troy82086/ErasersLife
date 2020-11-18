@@ -15,13 +15,16 @@ public class Hints : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Hints Start");
         HouseBehavior[] houses = randomization.houses;
-        for (int i = 0; i < houses.Length; i++)
+        if (houses != null)
         {
-            if (houses[i].isFinish)
+            for (int i = 0; i < houses.Length; i++)
             {
-                finishHouse = houses[i];
+                if (houses[i].isFinish == true && houses[i] != null)
+                {
+                    finishHouse = houses[i];
+                    break;
+                }
             }
         }
     }

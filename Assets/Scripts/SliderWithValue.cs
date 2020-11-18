@@ -9,7 +9,6 @@ public class SliderWithValue : MonoBehaviour
 
     public Slider slider;
     public TMP_InputField input;
-    public string unit;
     public byte decimals = 2;
 
 
@@ -25,7 +24,7 @@ public class SliderWithValue : MonoBehaviour
 
     void ChangeValue(float value)
     {
-        input.text = value.ToString("n" + decimals) + " " + unit;
+        input.text = value.ToString("n" + decimals);
     }
 
     public void InputValueChanged()
