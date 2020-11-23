@@ -66,6 +66,8 @@ MonoBehaviour:
   - {fileID: 4577092924156076070}
   - {fileID: 4577092923783565561}
   - {fileID: 4577092925377958044}
+  energyWarning: {fileID: 0}
+  gameover: 
 --- !u!1 &1336957735248528397
 GameObject:
   m_ObjectHideFlags: 0
@@ -28194,7 +28196,7 @@ MonoBehaviour:
   cost: 25
   Unlocked: 1
   m_speed: 0
-  energyUsage: 7
+  energyUsage: 20
 --- !u!1 &6642252509769798005
 GameObject:
   m_ObjectHideFlags: 0
@@ -38090,11 +38092,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579a39169c1bd7a42aec827390b7a853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  needle: {fileID: 0}
   player: {fileID: 6414284034630644580}
   camera: {fileID: 3154547155785935153}
   pauseCamera: {fileID: 9033247172883948055}
   turnSpeed: 3
-  m_speed: 20
-  energyUsage: 5
-  cost: 10
+  m_maxSpeed: 1.5
+  m_speed: 0
+  energyUsage: 10
+  cost: 15
   Unlocked: 1
