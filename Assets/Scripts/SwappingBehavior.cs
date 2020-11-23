@@ -15,6 +15,7 @@ public class SwappingBehavior : MonoBehaviour
     [SerializeField] GameObject Walking = null;
     [SerializeField] GameObject Car = null;
     [SerializeField] GameObject Plane = null;
+    [SerializeField] GameObject panel = null;
     [SerializeField] GameObject[] UISwapTypes = null;
     [SerializeField] Slider imaginationBar = null;
     [SerializeField] Slider energyBar = null;
@@ -163,6 +164,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
         {
+            panel.SetActive(false);
             smoke[0].Play();
             timer = finishTimer;
             imagination -= costOfWalk;
@@ -191,6 +193,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Car.activeInHierarchy != true && carIsUnlocked && imagination - costOfCar > 0)
         {
+            panel.SetActive(true);
             smoke[1].Play();
             timer = finishTimer;
             imagination -= costOfCar;
@@ -219,6 +222,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Plane.activeInHierarchy != true && planeIsUnlocked && imagination - costOfPlane > 0)
         {
+            panel.SetActive(false);
             smoke[2].Play();
             timer = finishTimer;
             imagination -= costOfPlane;
