@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerCar : MonoBehaviour
 {
-    private const float MAX_SPEED_ANGLE = -75;
-    private const float ZERO_SPEED_ANGLE = -30;
+    //private const float MAX_SPEED_ANGLE = -75;
+    //private const float ZERO_SPEED_ANGLE = -30;
+    //[SerializeField] SettingsValues settingsValues = null;
+    //[SerializeField] Transform needle = null;
 
-    [SerializeField] SettingsValues settingsValues = null;
-    [SerializeField] Transform needle = null;
     [SerializeField] Transform player = null;
     [SerializeField] Transform camera = null;
     [SerializeField] Transform pauseCamera = null;
@@ -24,7 +24,7 @@ public class PlayerCar : MonoBehaviour
 
     void Update()
     {
-        impericalOrMetric = settingsValues.GetImpericalOrMetric();
+        //impericalOrMetric = settingsValues.GetImpericalOrMetric();
 
         Vector3 velocity = Vector3.zero;
         velocity.z = Input.GetAxis("Vertical");
@@ -59,20 +59,21 @@ public class PlayerCar : MonoBehaviour
 
         
         player.localPosition += FORWARD * forward;
-        needle.eulerAngles = new Vector3(0, 0, GetSpeedRotation());
         camera.localPosition = new Vector3(player.localPosition.x, camera.localPosition.y, player.localPosition.z);
         camera.eulerAngles = new Vector3(camera.eulerAngles.x, 0, -player.eulerAngles.y + 180);
         pauseCamera.localPosition = new Vector3(player.localPosition.x, pauseCamera.localPosition.y, player.localPosition.z);
         pauseCamera.eulerAngles = new Vector3(pauseCamera.eulerAngles.x, 0, -player.eulerAngles.y + 180);
+
+        //needle.eulerAngles = new Vector3(0, 0, GetSpeedRotation());
     }
 
-    private float GetSpeedRotation()
-    {
-        float totalAngleSize = ZERO_SPEED_ANGLE - MAX_SPEED_ANGLE;
-        float speedNormal = 0;
-        if (m_speed > 0) speedNormal = m_speed / m_maxSpeed; 
-        if (m_speed < 0) speedNormal = -m_speed / m_maxSpeed;
-        if (impericalOrMetric == 0) speedNormal *= 1.60934f;
-        return ZERO_SPEED_ANGLE - speedNormal * totalAngleSize;
-    }
+    //private float GetSpeedRotation()
+    //{
+    //    float totalAngleSize = ZERO_SPEED_ANGLE - MAX_SPEED_ANGLE;
+    //    float speedNormal = 0;
+    //    if (m_speed > 0) speedNormal = m_speed / m_maxSpeed; 
+    //    if (m_speed < 0) speedNormal = -m_speed / m_maxSpeed;
+    //    if (impericalOrMetric == 0) speedNormal *= 1.60934f;
+    //    return ZERO_SPEED_ANGLE - speedNormal * totalAngleSize;
+    //}
 }
