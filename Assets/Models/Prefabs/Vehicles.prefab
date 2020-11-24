@@ -56,6 +56,7 @@ MonoBehaviour:
   Walking: {fileID: 7127314356949045597}
   Car: {fileID: 9083682829863372458}
   Plane: {fileID: 6134944292504728675}
+  panel: {fileID: 0}
   UISwapTypes:
   - {fileID: 0}
   - {fileID: 0}
@@ -68,6 +69,7 @@ MonoBehaviour:
   - {fileID: 4577092925377958044}
   energyWarning: {fileID: 0}
   gameover: 
+  energyMK2: 0
 --- !u!1 &1336957735248528397
 GameObject:
   m_ObjectHideFlags: 0
@@ -28193,10 +28195,10 @@ MonoBehaviour:
   fallingSpeed: 20
   pauseCamera: {fileID: 9033247172883948055}
   cameraTransform: {fileID: 3154547155785935153}
-  cost: 25
+  cost: 20
   Unlocked: 1
   m_speed: 0
-  energyUsage: 20
+  energyUsage: 15
 --- !u!1 &6642252509769798005
 GameObject:
   m_ObjectHideFlags: 0
@@ -38092,13 +38094,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579a39169c1bd7a42aec827390b7a853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingsValues: {fileID: 0}
   needle: {fileID: 0}
   player: {fileID: 6414284034630644580}
   camera: {fileID: 3154547155785935153}
   pauseCamera: {fileID: 9033247172883948055}
   turnSpeed: 3
-  m_maxSpeed: 1.5
+  m_maxSpeed: 1
   m_speed: 0
-  energyUsage: 10
-  cost: 15
+  energyUsage: 15
+  cost: 20
   Unlocked: 1

@@ -8,6 +8,7 @@ public class PlayerCar : MonoBehaviour
     private const float MAX_SPEED_ANGLE = -75;
     private const float ZERO_SPEED_ANGLE = -30;
 
+    [SerializeField] SettingsValues settingsValues = null;
     [SerializeField] Transform needle = null;
     [SerializeField] Transform player = null;
     [SerializeField] Transform camera = null;
@@ -19,9 +20,12 @@ public class PlayerCar : MonoBehaviour
     public float energyUsage = 1;
     public int cost = 5;
     public bool Unlocked = false;
+    private int impericalOrMetric = 1;
 
     void Update()
     {
+        impericalOrMetric = settingsValues.GetImpericalOrMetric();
+
         Vector3 velocity = Vector3.zero;
         velocity.z = Input.GetAxis("Vertical");
         velocity.x = Input.GetAxis("Horizontal");
@@ -67,7 +71,8 @@ public class PlayerCar : MonoBehaviour
         float totalAngleSize = ZERO_SPEED_ANGLE - MAX_SPEED_ANGLE;
         float speedNormal = 0;
         if (m_speed > 0) speedNormal = m_speed / m_maxSpeed; 
-        if (m_speed < 0) speedNormal = -m_speed / m_maxSpeed; 
+        if (m_speed < 0) speedNormal = -m_speed / m_maxSpeed;
+        if (impericalOrMetric == 0) speedNormal *= 1.60934f;
         return ZERO_SPEED_ANGLE - speedNormal * totalAngleSize;
     }
 }

@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class SwappingBehavior : MonoBehaviour
 {
     [SerializeField] Camera[] cameras = null;
-    [SerializeField] static float imagination = 100;
-    [SerializeField] static float energy = 100;
     [SerializeField] float finishTimer = 2.5f;
     [SerializeField] GameObject Walking = null;
     [SerializeField] GameObject Car = null;
@@ -22,6 +20,10 @@ public class SwappingBehavior : MonoBehaviour
     [SerializeField] ParticleSystem[] smoke = null;
     [SerializeField] Canvas energyWarning;
     [SerializeField] string gameover;
+    [SerializeField] float energyMK2 = 0;
+
+    public static float imagination = 100;
+    public static float energy = 100;
 
     private bool walkIsUnlocked;
     private bool carIsUnlocked;
@@ -34,10 +36,6 @@ public class SwappingBehavior : MonoBehaviour
     private int costOfWalk;
     private int costOfCar;
     private int costOfPlane;
-
-    private float topPlane = 350, bottomPlane = 288, leftPlane = 475, rightPlane = 540;
-    private float topCar = 287, bottomCar = 221, leftCar = 435, rightCar = 500;
-    private float topWalk = 287, bottomWalk = 221, leftWalk = 515, rightWalk = 580;
 
     private void Start()
     {
@@ -69,11 +67,10 @@ public class SwappingBehavior : MonoBehaviour
 
     void Update()
     {
+        energyMK2 = energy;
         walkIsUnlocked = Walking.GetComponent<PlayerWalk>().Unlocked;
         carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
         planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
-
-        if (Input.GetKey(KeyCode.Escape)) Menu();
 
         if (Input.GetKey(KeyCode.RightShift))
         {
@@ -97,25 +94,11 @@ public class SwappingBehavior : MonoBehaviour
             if (walkIsUnlocked)
             {
                 UISwapTypes[2].SetActive(true);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha1) && Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
-            {
-                goWalk();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && Car.activeInHierarchy != true && carIsUnlocked && imagination - costOfCar > 0)
-            {
-                goCar();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3) && Plane.activeInHierarchy != true && planeIsUnlocked && imagination - costOfPlane > 0)
-            {
-                goPlane();
-            }
+            }            
         }
 
         if (timer >= finishTimer && timer < 10f)
         {
-            mouseOver();
             UISwapTypes[0].SetActive(false);
             UISwapTypes[1].SetActive(false);
             UISwapTypes[2].SetActive(false);
@@ -126,9 +109,9 @@ public class SwappingBehavior : MonoBehaviour
         {
             imagination += .25f * Time.deltaTime;
         }
-        if (energy <= maxEnergy && energy > -1)
+        if (energy > -1)
         {
-            if (Walking.activeInHierarchy)
+            if (Walking.activeInHierarchy && energy < maxEnergy)
             {
                 energy -= (Walking.GetComponent<PlayerWalk>().energyUsage / 10) * Time.deltaTime;
             }
@@ -248,37 +231,5 @@ public class SwappingBehavior : MonoBehaviour
             pp.m_speed = 0;
             pp.cameraTransform.rotation = new Quaternion(pp.cameraTransform.rotation.eulerAngles.x, pp.cameraTransform.rotation.eulerAngles.y, Plane.transform.rotation.eulerAngles.z, 90f);
         }
-    }
-
-    private void mouseOver()
-    {
-        if (Input.mousePosition.x > leftPlane && Input.mousePosition.x < rightPlane)
-        {
-            if (Input.mousePosition.y > bottomPlane && Input.mousePosition.y < topPlane)
-            {
-                goPlane();
-            }
-        }
-
-        if (Input.mousePosition.x > leftCar && Input.mousePosition.x < rightCar)
-        {
-            if (Input.mousePosition.y > bottomCar && Input.mousePosition.y < topCar)
-            {
-                goCar();
-            }
-        }
-
-        if (Input.mousePosition.x > leftWalk && Input.mousePosition.x < rightWalk)
-        {
-            if (Input.mousePosition.y > bottomWalk && Input.mousePosition.y < topWalk)
-            {
-                goWalk();
-            }
-        }
-    }
-
-    private void Menu()
-    {
-
     }
 }

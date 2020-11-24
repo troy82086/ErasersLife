@@ -36,5 +36,8 @@ public class SettingsValues : MonoBehaviour
 
     public void MiniMapValueChange() { serializeValues.miniPov = (int)mini.value; }
     public void VolumeValueChange() { serializeValues.volume = (int)vol.value; }
-    public void ImpericalOrMetricValueChange() { serializeValues.impericalOrMetric = iM.value; }
+    public void ImpericalOrMetricValueChange() { if(iM != null) serializeValues.impericalOrMetric = iM.value; }
+
+    public int GetImpericalOrMetric() { return serializeValues.impericalOrMetric; }
+    public int GetVolume() { return serializeValues.volume; }
 }
