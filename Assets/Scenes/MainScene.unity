@@ -63099,7 +63099,7 @@ PrefabInstance:
     - target: {fileID: 1329541221265724476, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
         type: 3}
       propertyPath: hintDescriptions.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1329541221265724476, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
         type: 3}
@@ -63125,6 +63125,16 @@ PrefabInstance:
         type: 3}
       propertyPath: isFinish
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329541221265724476, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
+        type: 3}
+      propertyPath: hintDescriptions.Array.data[4]
+      value: lives across the street from a person with a purple truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329541221265724476, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
+        type: 3}
+      propertyPath: hintDescriptions.Array.data[5]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4742742932070784606, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
         type: 3}
@@ -69984,7 +69994,7 @@ PrefabInstance:
     - target: {fileID: 1540298107887718703, guid: 12f85230ba464fd409b972e7eaa33b35,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3800807634929905316, guid: 12f85230ba464fd409b972e7eaa33b35,
         type: 3}
@@ -70498,6 +70508,16 @@ PrefabInstance:
       propertyPath: panel
       value: 
       objectReference: {fileID: 89095232}
+    - target: {fileID: 7127314356949045597, guid: a939bd5760e0ed5489e31c8df79e5ef8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083682829863372458, guid: a939bd5760e0ed5489e31c8df79e5ef8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a939bd5760e0ed5489e31c8df79e5ef8, type: 3}
 --- !u!1001 &5415557069119209466
@@ -70774,7 +70794,7 @@ PrefabInstance:
     - target: {fileID: 3146363032331865733, guid: bc903029e14a0874f82a7740527fcc15,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3658191734536828162, guid: bc903029e14a0874f82a7740527fcc15,
         type: 3}
