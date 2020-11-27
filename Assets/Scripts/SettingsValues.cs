@@ -13,15 +13,15 @@ public class SettingsValues : MonoBehaviour
     [SerializeField] Slider musicVol = null;
     [SerializeField] TMP_Dropdown iM = null;
     [SerializeField] GameObject SettingsCanvas = null;
-    [SerializeField] AudioMixer audioMixer1;
-    [SerializeField] AudioMixer audioMixer2;
+    [SerializeField] AudioMixer sfx;
+    [SerializeField] AudioMixer music;
 
     [Serializable]
     public static class serializeValues
     {
         public static int miniPov = 300;
         public static float sfxVolume = 80;
-        public static float musicVolume = 80;
+        public static float musicVolume = 50;
         public static int impericalOrMetric = 1;
     }
 
@@ -40,8 +40,8 @@ public class SettingsValues : MonoBehaviour
         mini.value = miniPov;
         sfxVol.value = sfxVolume;
         musicVol.value = musicVolume;
-        audioMixer1.SetFloat("sfx", sfxVolume - 40);
-        audioMixer2.SetFloat("music", musicVolume - 40);
+        sfx.SetFloat("sfx", sfxVolume - 40);
+        music.SetFloat("music", musicVolume - 40);
         if (iM != null) iM.value = impericalOrMetric;
     }
 
@@ -49,12 +49,12 @@ public class SettingsValues : MonoBehaviour
     public void SFXVolumeValueChange()
     {
         serializeValues.sfxVolume = sfxVol.value - 40;
-        audioMixer1.SetFloat("sfx", serializeValues.sfxVolume - 40);
+        sfx.SetFloat("sfx", serializeValues.sfxVolume - 40);
     }
     public void MusicVolumeValueChange()
     {
         serializeValues.musicVolume = musicVol.value - 40;
-        audioMixer2.SetFloat("music", serializeValues.musicVolume - 40);
+        music.SetFloat("music", serializeValues.musicVolume - 40);
     }
     public void ImpericalOrMetricValueChange() { if (iM != null) serializeValues.impericalOrMetric = iM.value; }
 

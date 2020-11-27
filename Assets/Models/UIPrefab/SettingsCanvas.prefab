@@ -356,7 +356,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4166333395159273538}
-        m_MethodName: VolumeValueChange
+        m_MethodName: MusicVolumeValueChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2291,9 +2291,9 @@ RectTransform:
   m_Father: {fileID: 7837820441052613676}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6766425665464002811
@@ -2732,9 +2732,9 @@ RectTransform:
   m_Father: {fileID: 6414866566851768034}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2977557931549181756
@@ -3372,7 +3372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6997159402089196238}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
@@ -3417,11 +3417,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mini: {fileID: 6997159400683004118}
-  vol: {fileID: 9057914326592592739}
+  sfxVol: {fileID: 9057914326592592739}
+  musicVol: {fileID: 4496970769840132429}
   iM: {fileID: 3658191734536828162}
   SettingsCanvas: {fileID: 6997159402089196238}
-  audioMixer1: {fileID: 0}
-  audioMixer2: {fileID: 0}
+  sfx: {fileID: 24100000, guid: a89f7baa12e9b094f98f802db7d80267, type: 2}
+  music: {fileID: 24100000, guid: e3abb9cfed2d08b48a9025d67c49b8d4, type: 2}
 --- !u!1 &6997159402116971040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3924,9 +3925,9 @@ RectTransform:
   m_Father: {fileID: 6997159400683004119}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 111.95, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8389639741600142207
@@ -4760,7 +4761,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4166333395159273538}
-        m_MethodName: VolumeValueChange
+        m_MethodName: SFXVolumeValueChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
