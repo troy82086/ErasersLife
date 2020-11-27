@@ -10,6 +10,8 @@ public class Hints : MonoBehaviour
     [SerializeField] Randomization randomization;
     [SerializeField] Canvas hintCanvas;
     [SerializeField] TextMeshProUGUI hintText;
+    [SerializeField] TextMeshProUGUI hintMenuText;
+    [SerializeField] bool hasBeenTriggered = false;
 
     private HouseBehavior finishHouse = null;
 
@@ -37,6 +39,11 @@ public class Hints : MonoBehaviour
             if (hintCanvas.enabled)
             {
                 hintText.SetText("The Kid lives in a house " + finishHouse.hintDescriptions[hintNumber] + ".");
+                if (!hasBeenTriggered)
+                {
+                    hintMenuText.SetText(hintMenuText.text + (hintNumber + 1)+ ".) " +hintText.text + "\n");
+                    hasBeenTriggered = true;
+                }
             }
         }
     }
