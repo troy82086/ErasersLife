@@ -21,7 +21,7 @@ public class SettingsValues : MonoBehaviour
     {
         public static int miniPov = 300;
         public static float sfxVolume = 80;
-        public static float musicVolume = 50;
+        public static float musicVolume = 80;
         public static int impericalOrMetric = 1;
     }
 
