@@ -14,6 +14,7 @@ public class PlayerPlane : MonoBehaviour
     [SerializeField] float idleSpeed = 4f;
     [SerializeField] float fallingSpeed = 3.9f;
     [SerializeField] Transform pauseCamera = null;
+    [SerializeField] AudioSource engine = null;
 
     public Transform cameraTransform = null;
     public int cost = 5;
@@ -38,25 +39,28 @@ public class PlayerPlane : MonoBehaviour
 
         Transform par = transform.parent.transform;
 
-        transform.RotateAround(transform.position, par.right, -pitch * Time.deltaTime);
-        transform.RotateAround(transform.position, par.up, yaw * Time.deltaTime);
-        transform.RotateAround(transform.position, par.forward, roll * Time.deltaTime);
+        player.RotateAround(player.position, par.right, -pitch * Time.deltaTime);
+        player.RotateAround(player.position, par.up, yaw * Time.deltaTime);
+        player.RotateAround(player.position, par.forward, roll * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
+        if (Time.timeScale != 0)
         {
-            m_speed += 0.5f;
-        }
-        else if (Input.GetKey(KeyCode.S) && m_speed > minSpeed)
-        {
-            m_speed -= 0.5f;
-        }
-        else if (m_speed > 0 && m_speed > idleSpeed)
-        {
-            m_speed -= 0.1f;
-        }
-        else if (m_speed < 0 && m_speed < -idleSpeed)
-        {
-            m_speed += 0.1f;
+            if (Input.GetKey(KeyCode.W) && m_speed < maxSpeed)
+            {
+                m_speed += 0.5f;
+            }
+            else if (Input.GetKey(KeyCode.S) && m_speed > minSpeed)
+            {
+                m_speed -= 0.5f;
+            }
+            else if (m_speed > 0 && m_speed > idleSpeed)
+            {
+                m_speed -= 0.1f;
+            }
+            else if (m_speed < 0 && m_speed < -idleSpeed)
+            {
+                m_speed += 0.1f;
+            }
         }
 
         if (m_speed < fallingSpeed)
@@ -67,6 +71,9 @@ public class PlayerPlane : MonoBehaviour
         {
             rb.useGravity = false;
         }
+
+        engine.pitch = m_speed * Time.deltaTime;
+        if (m_speed < 0.1 && m_speed > -0.1) engine.pitch = 0.4f;
 
         float forward = m_speed * Time.deltaTime;
 

@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4787030355063471920}
   m_Layer: 0
   m_Name: BigHouseAndYard
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -881,7 +881,7 @@ PrefabInstance:
     - target: {fileID: 4742742932070784606, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 60
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 4742742932070784606, guid: f9a3b5ebbb6cddc4d87d30d2cb127835,
         type: 3}

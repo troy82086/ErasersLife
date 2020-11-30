@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerWalk : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerWalk : MonoBehaviour
     [SerializeField] Transform player = null;
     [SerializeField] Transform camera = null;
     [SerializeField] Transform pauseCamera = null;
+    [SerializeField] AudioSource footSteps = null;
     [SerializeField] int horizontalSpeed = 1;
     [SerializeField] int m_speed = 1;
     [SerializeField] int jumpforce = 5;
@@ -45,6 +47,13 @@ public class PlayerWalk : MonoBehaviour
         if ((Input.GetKey(KeyCode.Space)) && touchingFloor)
         {
             rb.AddForce(new Vector3(0, jumpforce, 0));
+        }
+
+        if(touchingFloor && forward != 0f && footSteps.isPlaying == false)
+        {
+            footSteps.volume = Random.Range(0.8f, 1);
+            footSteps.pitch = Random.Range(0.8f, 1.1f);
+            footSteps.Play();
         }
 
         camera.localPosition = new Vector3(player.localPosition.x, camera.localPosition.y, player.localPosition.z);

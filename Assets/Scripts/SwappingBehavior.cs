@@ -24,6 +24,7 @@ public class SwappingBehavior : MonoBehaviour
 
     public static float imagination = 100;
     public static float energy = 100;
+    private static int vehicle = 0;
 
     private bool walkIsUnlocked;
     private bool carIsUnlocked;
@@ -49,15 +50,15 @@ public class SwappingBehavior : MonoBehaviour
         carIsUnlocked = Car.GetComponent<PlayerCar>().Unlocked;
         planeIsUnlocked = Plane.GetComponent<PlayerPlane>().Unlocked;
 
-        if (walkIsUnlocked)
+        if (walkIsUnlocked && vehicle == 0)
         {
             goWalk();
         }
-        else if (carIsUnlocked)
+        else if (carIsUnlocked && vehicle == 1)
         {
             goCar();
         }
-        else if (planeIsUnlocked)
+        else if (planeIsUnlocked && vehicle == 2)
         {
             goPlane();
         }
@@ -94,9 +95,10 @@ public class SwappingBehavior : MonoBehaviour
             if (walkIsUnlocked)
             {
                 UISwapTypes[2].SetActive(true);
-            }            
+            }
         }
 
+        
         if (timer >= finishTimer && timer < 10f)
         {
             UISwapTypes[0].SetActive(false);
@@ -147,6 +149,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
         {
+            vehicle = 0;
             panel.SetActive(false);
             smoke[0].Play();
             timer = finishTimer;
@@ -176,6 +179,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Car.activeInHierarchy != true && carIsUnlocked && imagination - costOfCar > 0)
         {
+            vehicle = 1;
             panel.SetActive(true);
             smoke[1].Play();
             timer = finishTimer;
@@ -205,6 +209,7 @@ public class SwappingBehavior : MonoBehaviour
     {
         if (Plane.activeInHierarchy != true && planeIsUnlocked && imagination - costOfPlane > 0)
         {
+            vehicle = 2;
             panel.SetActive(false);
             smoke[2].Play();
             timer = finishTimer;
