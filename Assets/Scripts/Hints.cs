@@ -39,7 +39,7 @@ public class Hints : MonoBehaviour
             if (hintCanvas.enabled)
             {
                 if (hintNumber > finishHouse.hintDescriptions.Length) hintNumber = Random.Range(0, finishHouse.hintDescriptions.Length);
-                hintText.SetText("The Kid lives in a house " + finishHouse.hintDescriptions[hintNumber] + ".");
+                hintText.SetText(finishHouse.hintDescriptions[hintNumber]);
                 if (!hasBeenTriggered)
                 {
                     hintMenuText.SetText(hintMenuText.text + (hintNumber + 1)+ ".) " +hintText.text + "\n");
