@@ -29,6 +29,7 @@ public class SwappingBehavior : MonoBehaviour
     private bool walkIsUnlocked;
     private bool carIsUnlocked;
     private bool planeIsUnlocked;
+    private bool energyActive = true;
 
     private float timer = 16f;
     private float maxImagination;
@@ -79,6 +80,17 @@ public class SwappingBehavior : MonoBehaviour
             if (Car.activeInHierarchy) Car.transform.eulerAngles = new Vector3(-90, Car.transform.eulerAngles.y, Car.transform.eulerAngles.z);
         }
 
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            energyActive = !energyActive;
+            energy = 100;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            imagination = 100;
+        }
+
         if (Input.GetKey(KeyCode.Tab)) timer = 0f;
         if (Input.GetKey(KeyCode.Tab) || timer <= 5f)
         {
@@ -111,7 +123,7 @@ public class SwappingBehavior : MonoBehaviour
         {
             imagination += .25f * Time.deltaTime;
         }
-        if (energy > -1)
+        if (energy > -1 && energyActive)
         {
             if (Walking.activeInHierarchy && energy < maxEnergy)
             {

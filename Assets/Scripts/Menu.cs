@@ -16,19 +16,16 @@ public class Menu : MonoBehaviour
         }
     }
 
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(scene);
     }
     
-    /// <summary>
-    /// A place to change the volume and if they are imperical or metric users
-    /// </summary>
-    public void Settings()
-    {
-
-    }
-
     public void ExitGame()
     {
         Application.Quit();

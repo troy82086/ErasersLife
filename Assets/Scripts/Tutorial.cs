@@ -7,7 +7,7 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] GameObject[] tutorialItems = null;
 
-    private static int number = 0;
+    public int number = 0;
 
     void Update()
     {
@@ -17,10 +17,13 @@ public class Tutorial : MonoBehaviour
         }
         if (number + 1 >= tutorialItems.Length)
         {
+            tutorialItems[number].SetActive(false);  
+            number = 0;
+            tutorialItems[number].SetActive(true);
             gameObject.SetActive(false);
         }        
     }
-
+    
     public void NextTutorialItem()
     {
         tutorialItems[number].SetActive(false);

@@ -42,6 +42,10 @@ public class PlayerCar : MonoBehaviour
 
         if (Time.timeScale != 0)
         {
+            if (Input.GetKey(KeyCode.Alpha2))
+            {
+                m_maxSpeed = 10;
+            }
             if (Input.GetKey(KeyCode.W) && m_speed < m_maxSpeed)
             {
                 m_speed += 0.1f;
