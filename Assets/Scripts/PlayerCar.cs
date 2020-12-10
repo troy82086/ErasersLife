@@ -22,6 +22,12 @@ public class PlayerCar : MonoBehaviour
     public int cost = 5;
     public bool Unlocked = false;
     private int impericalOrMetric = 1;
+    private float maxSpeedReg;
+
+    private void Start()
+    {
+        maxSpeedReg = m_maxSpeed;
+    }
 
     void Update()
     {
@@ -45,6 +51,10 @@ public class PlayerCar : MonoBehaviour
             if (Input.GetKey(KeyCode.Alpha2))
             {
                 m_maxSpeed = 10;
+            }
+            if (Input.GetKey(KeyCode.Alpha3))
+            {
+                m_maxSpeed = maxSpeedReg;
             }
             if (Input.GetKey(KeyCode.W) && m_speed < m_maxSpeed)
             {
