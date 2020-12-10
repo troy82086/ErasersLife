@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 481414659}
+      - m_Target: {fileID: 0}
         m_MethodName: ImpericalOrMetricValueChange
         m_Mode: 1
         m_Arguments:
@@ -3089,7 +3089,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 481414659}
+      - m_Target: {fileID: 0}
         m_MethodName: MiniMapValueChange
         m_Mode: 1
         m_Arguments:
@@ -3323,7 +3323,6 @@ GameObject:
   - component: {fileID: 6997159402089196224}
   - component: {fileID: 6997159402089196225}
   - component: {fileID: 4166333395159273538}
-  - component: {fileID: 481414659}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -3430,25 +3429,6 @@ MonoBehaviour:
   SettingsCanvas: {fileID: 6997159402089196238}
   sfx: {fileID: 24100000, guid: a89f7baa12e9b094f98f802db7d80267, type: 2}
   music: {fileID: 24100000, guid: e3abb9cfed2d08b48a9025d67c49b8d4, type: 2}
---- !u!114 &481414659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6997159402089196238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60dc57f7035a68643af191d0f63c01cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mini: {fileID: 6997159400683004118}
-  sfxVol: {fileID: 0}
-  musicVol: {fileID: 0}
-  iM: {fileID: 3658191734536828162}
-  SettingsCanvas: {fileID: 6997159402089196238}
-  sfx: {fileID: 0}
-  music: {fileID: 0}
 --- !u!1 &6997159402116971040
 GameObject:
   m_ObjectHideFlags: 0
