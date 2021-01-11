@@ -159,6 +159,7 @@ public class SwappingBehavior : MonoBehaviour
 
     public void goWalk()
     {
+        PlayerWalk walk = Walking.GetComponent<PlayerWalk>();
         if (Walking.activeInHierarchy != true && walkIsUnlocked && imagination - costOfWalk > 0)
         {
             vehicle = 0;
@@ -171,6 +172,7 @@ public class SwappingBehavior : MonoBehaviour
             {
                 Walking.transform.position = new Vector3(Car.transform.position.x, Car.transform.position.y + 2.54f, Car.transform.position.z);
 
+                walk.touchingFloor = false;
                 Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Car.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
                 Walking.transform.rotation = Quaternion.Euler(eulerRotation);
             }
@@ -178,6 +180,7 @@ public class SwappingBehavior : MonoBehaviour
             {
                 Walking.transform.position = new Vector3(Plane.transform.position.x, Plane.transform.position.y + 2.54f, Plane.transform.position.z);
 
+                walk.touchingFloor = false;
                 Vector3 eulerRotation = new Vector3(Walking.transform.eulerAngles.x, Plane.transform.eulerAngles.y, Walking.transform.eulerAngles.z);
                 Walking.transform.rotation = Quaternion.Euler(eulerRotation);
             }
