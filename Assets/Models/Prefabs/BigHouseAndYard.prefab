@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 4669349056661327959}
   - component: {fileID: 7606824950303130566}
   - component: {fileID: 8173655215894730318}
+  - component: {fileID: 7488328344265297712}
   m_Layer: 0
   m_Name: CurbLowered
   m_TagString: Untagged
@@ -586,6 +587,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7488328344265297712
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241611707005471634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: fae5a85faaafeae479f8eaefbbd12386, type: 3}
 --- !u!1 &6290050225536959914
 GameObject:
   m_ObjectHideFlags: 0
