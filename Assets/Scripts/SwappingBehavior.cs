@@ -252,4 +252,11 @@ public class SwappingBehavior : MonoBehaviour
             pp.cameraTransform.rotation = new Quaternion(pp.cameraTransform.rotation.eulerAngles.x, pp.cameraTransform.rotation.eulerAngles.y, Plane.transform.rotation.eulerAngles.z, 90f);
         }
     }
+    
+    public static void ResetSliders()
+    {
+        imagination = 100;
+        energy = 100;
+    }
+
 }
