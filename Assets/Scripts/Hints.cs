@@ -49,13 +49,18 @@ public class Hints : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            hintCanvas.enabled = false;
-            if (!hasBeenTriggered)
-            {
-                hintText.SetText(finishHouse.hintDescriptions[hintNumber]);
-                hintMenuText.SetText(hintMenuText.text + (hintName) + "; \"" + hintText.text + "\"\n");
-                hasBeenTriggered = true;
-            }
+            ExitMethod();
+        }
+    }
+
+    private void ExitMethod()
+    {
+        hintCanvas.enabled = false;
+        if (!hasBeenTriggered)
+        {
+            string menutext = hintMenuText.text;
+            hintMenuText.SetText(menutext + (hintName) + "; \"" + finishHouse.hintDescriptions[hintNumber] + "\"\n");
+            hasBeenTriggered = true;
         }
     }
 }
