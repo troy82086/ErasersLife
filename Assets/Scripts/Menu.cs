@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene("StartScene");
+        SwappingBehavior.ResetSliders();
     }
 
     public void StartGame()

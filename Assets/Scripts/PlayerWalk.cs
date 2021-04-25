@@ -19,7 +19,7 @@ public class PlayerWalk : MonoBehaviour
     public int cost = 5;
     public float energyUsage = -1;
     public bool Unlocked = false;
-    private bool touchingFloor;
+    public bool touchingFloor = false;
 
     void Update()
     {

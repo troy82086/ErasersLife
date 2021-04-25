@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Hints : MonoBehaviour
 {
+    [SerializeField] string hintName;
     [SerializeField] int hintNumber;
     [SerializeField] Randomization randomization;
     [SerializeField] Canvas hintCanvas;
@@ -39,12 +40,7 @@ public class Hints : MonoBehaviour
             if (hintCanvas.enabled)
             {
                 if (hintNumber > finishHouse.hintDescriptions.Length) hintNumber = Random.Range(0, finishHouse.hintDescriptions.Length);
-                hintText.SetText(finishHouse.hintDescriptions[hintNumber]);
-                if (!hasBeenTriggered)
-                {
-                    hintMenuText.SetText(hintMenuText.text + (hintNumber + 1)+ ".) " +hintText.text + "\n");
-                    hasBeenTriggered = true;
-                }
+                hintText.SetText((hintName) + "; \n" + finishHouse.hintDescriptions[hintNumber]);
             }
         }
     }
@@ -54,6 +50,12 @@ public class Hints : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             hintCanvas.enabled = false;
+            if (!hasBeenTriggered)
+            {
+                hintText.SetText(finishHouse.hintDescriptions[hintNumber]);
+                hintMenuText.SetText(hintMenuText.text + (hintName) + "; \"" + hintText.text + "\"\n");
+                hasBeenTriggered = true;
+            }
         }
     }
 }
