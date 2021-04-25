@@ -45,7 +45,7 @@ public class SettingsValues : MonoBehaviour
     
     public void SFXVolumeValueChange()
     {
-        serializeValues.sfxVolume = sfxVol.value - 40;
+        serializeValues.sfxVolume = sfxVol.value;
         sfx.SetFloat("sfx", serializeValues.sfxVolume - 40);
     }
     
